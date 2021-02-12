@@ -24,6 +24,8 @@ def numeriek(start_positie, start_snelheid, start_acceleratie, tijd):
 	:param tijd:
 	:return:
 	"""
+	global fig, ax
+
 	# Function variables
 	positie = np.zeros(len(tijd))
 	snelheid = np.zeros(len(tijd))
@@ -38,7 +40,7 @@ def numeriek(start_positie, start_snelheid, start_acceleratie, tijd):
 		snelheid[t + 1] = snelheid[t] + acceleratie[t] * dt
 		positie[t + 1] = positie[t] + snelheid[t] * dt
 
-	return f'positie: {positie[-1]} \n snelheid: {snelheid[-1]} \n acceleratie: {acceleratie[-1]}'
+	return positie
 
 
 def analytisch(x, v, a, t):
@@ -53,3 +55,13 @@ def analytisch(x, v, a, t):
 	position = x + v * t
 	return position
 
+
+n = numeriek(x0, v0, 0, time)
+n -= analytisch(x0, v0, 0, time)
+
+# Plots
+fig, ax = plt.subplots(1, 2)
+ax[0].plot(time, numeriek(x0, v0, 0, time))  # Plot de numerieke resultaten
+ax[0].plot(time, analytisch(x0, v0, 0, time), 'y--')  # Plot analytische resultaten als gele stippellijn
+ax[1].plot(time, n)  # Plot het verschil
+plt.show()
