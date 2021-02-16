@@ -75,14 +75,14 @@ def versnelling(t):
 # n -= analytisch(x0, v0, 0, time)
 
 # === Prints ===
-print(f'Positie voor t = {6.1} volgens numerieke integratie: {numeriek(x0, v0, a0, time)[61]}')
-# print(f'Positie voor t = {t1} volgens analytische benadering: {analytisch(x0, v0, a0, time)[-1]}')
+print(f'Positie voor t = {6.1} volgens numerieke integratie: {numeriek(x0, v0, time)[61]}')
+# print(f'Positie voor t = {t1} volgens analytische benadering: {analytisch(x0, v0, time)[-1]}')
 
 
 # === Plots ===
 fig, ax = plt.subplots(1, 2)
-ax[0].plot(time, numeriek(x0, v0, a0, time))  # Plot de numerieke resultaten
+ax[0].plot(time, numeriek(x0, v0, time))  # Plot de numerieke resultaten
 ax[0].plot(time, analytisch(x0, v0, a0, time), 'y--')  # Plot analytische resultaten als gele stippellijn
-ax[1].plot(time, abs(numeriek(x0, v0, a0, time)-analytisch(x0, v0, a0, time)))  # Plot het verschil
+ax[1].plot(time, abs(numeriek(x0, v0, time)-analytisch(x0, v0, a0, time)))  # Plot het verschil
 
 plt.show()
