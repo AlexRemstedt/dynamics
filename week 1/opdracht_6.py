@@ -7,13 +7,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # === Variables ===
-dt = 0.1  # [s] grootte van tijdstappen
-t0 = 0  # [s] Starttijd van simulatie
-t1 = 10  # [s] Eindtijd van sim
-x0 = 0  # [m] beginpositie
-v0 = 0  # [m/s] beginsnelheid
+dt = 0.1  	# [s] grootte van tijdstappen
+t0 = 0  	# [s] Starttijd van simulatie
+t1 = 10  	# [s] Eindtijd van sim
+x0 = 0  	# [m] beginpositie
+v0 = 0  	# [m/s] beginsnelheid
 a0 = -9.81  # [m/s^2] beginacceleratie
-m = 7.0  # [kg] massa
+m = 7.0  	# [kg] massa
 
 time = np.linspace(t0, t1, 1 + round((t1 - t0) / dt))  # time
 
