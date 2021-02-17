@@ -43,13 +43,13 @@ def numeriek(start_positie, start_snelheid, tijd):
 	positie[0] = start_positie
 	snelheid[0] = start_snelheid
 
-	for t in range(len(tijd)):
+	for t in range(len(tijd) - 1):
 		if tijd[t] < t1:
 			acceleratie[t] = versnelling(tijd[t])
 		else:
 			acceleratie[t] = 0
-		snelheid[t] = snelheid[t - 1] + acceleratie[t - 1] * dt
-		positie[t] = positie[t - 1] + snelheid[t] * dt
+		snelheid[t + 1] = snelheid[t] + acceleratie[t] * dt
+		positie[t + 1] = positie[t] + snelheid[t] * dt
 	return positie
 
 
