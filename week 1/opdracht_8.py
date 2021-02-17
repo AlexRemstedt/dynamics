@@ -26,16 +26,19 @@ time = np.linspace(t_begin, t_end, 1 + round((t_end - t_begin) / dt))  # time
 def numeriek(start_positie, start_snelheid, tijd):
 	"""
 	:param start_positie: De start positie
+	:type start_positie: float
 	:param start_snelheid: De start snelheid
+	:type start_snelheid: float
 	:param tijd: Tijd (in vector vorm)
-	:return: De posities op elk tijdstip in een np.array
+	:type tijd: np.ndarray
+	:return: De posities op elk tijdstip in een np.array door middel van numerieke integratie
 	"""
 	# Function variables
 	global dt, t1
 
 	positie = np.zeros(len(tijd))
 	snelheid = np.zeros(len(tijd))
-	acceleratie = versnelling(tijd)
+	acceleratie = np.zeros(len(tijd))
 
 	positie[0] = start_positie
 	snelheid[0] = start_snelheid
@@ -52,13 +55,15 @@ def numeriek(start_positie, start_snelheid, tijd):
 
 def analytisch(start_positie, start_snelheid, tijd):
 	"""
-	a = cos(t)/m ==> v = v0 + sin(t)/m ==> s = s0 + v0*t - (cos(t) - 1)/m
 	:param start_positie: beginpositie
+	:type start_positie: float
 	:param start_snelheid: beginsnelheid
+	:type start_snelheid: float
 	:param tijd: tijd
+	:type tijd: numpy.array
 	:return:
 	"""
-	global m
+	global m, t1
 	position = np.zeros(len(tijd))  # Position vector
 
 	for t in range(len(tijd)):
@@ -72,9 +77,9 @@ def analytisch(start_positie, start_snelheid, tijd):
 
 def versnelling(t):
 	"""
-
 	:param t: tijd
-	:return:
+	:type t: float
+	:return: the acceleration at t
 	"""
 	global m
 	f = 3.5 * t
