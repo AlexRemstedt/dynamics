@@ -25,7 +25,7 @@ def numeriek(start_positie, start_snelheid, tijd):
 	:param start_positie: De start positie
 	:param start_snelheid: De start snelheid
 	:param tijd: Tijd (in vector vorm)
-	:return:
+	:return: De posities op elk tijdstip in een np.array
 	"""
 	# Function variables
 	positie = np.zeros(len(tijd))
