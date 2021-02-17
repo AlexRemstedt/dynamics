@@ -1,33 +1,38 @@
 """
 	Author : Alex Remstedt
-	Opdrachten 6, 7
+	Opdrachten: 8
+
+	To Do:
+		TODO: form analytical == numeric, but size !=.
 """
 # === Imports ===
 import numpy as np
 from matplotlib import pyplot as plt
 
 # === Variables ===
-dt = 0.1  # [s] grootte van tijdstappen
-t0 = 0  # [s] Starttijd van simulatie
-t1 = 10  # [s] Eindtijd van sim
-x0 = 0  # [m] beginpositie
-v0 = 0  # [m/s] beginsnelheid
-a0 = -9.81  # [m/s^2] beginacceleratie
-m = 7.0  # [kg] massa
+dt = 0.1  		# [s] grootte van tijdstappen
+t_begin = 0  	# [s] Starttijd van simulatie
+t1 = 10			# [s] time in between
+t_end = 18.8  	# [s] Eindtijd van sim
+x0 = 0  		# [m] beginpositie
+v0 = 0  		# [m/s] beginsnelheid
+a0 = -9.81  	# [m/s^2] beginacceleratie
+m = 6.0  		# [kg] massa
 
-time = np.linspace(t0, t1, 1 + round((t1 - t0) / dt))  # time
+time = np.linspace(t_begin, t_end, 1 + round((t_end - t_begin) / dt))  # time
 
 
 # === Functions ===
 def numeriek(start_positie, start_snelheid, tijd):
 	"""
-
 	:param start_positie: De start positie
 	:param start_snelheid: De start snelheid
 	:param tijd: Tijd (in vector vorm)
 	:return: De posities op elk tijdstip in een np.array
 	"""
 	# Function variables
+	global dt, t1
+
 	positie = np.zeros(len(tijd))
 	snelheid = np.zeros(len(tijd))
 	acceleratie = versnelling(tijd)
@@ -35,10 +40,13 @@ def numeriek(start_positie, start_snelheid, tijd):
 	positie[0] = start_positie
 	snelheid[0] = start_snelheid
 
-	for t in range(len(tijd) - 1):
-		d_t = tijd[t + 1] - tijd[t]
-		snelheid[t + 1] = snelheid[t] + acceleratie[t] * d_t
-		positie[t + 1] = positie[t] + snelheid[t] * d_t
+	for t in range(len(tijd)):
+		if tijd[t] < t1:
+			acceleratie[t] = versnelling(tijd[t])
+		else:
+			acceleratie[t] = 0
+		snelheid[t] = snelheid[t - 1] + acceleratie[t - 1] * dt
+		positie[t] = positie[t - 1] + snelheid[t] * dt
 	return positie
 
 
@@ -54,7 +62,11 @@ def analytisch(start_positie, start_snelheid, tijd):
 	position = np.zeros(len(tijd))  # Position vector
 
 	for t in range(len(tijd)):
-		position[t] = start_positie + start_snelheid * tijd[t] - np.cos(tijd[t])/m + 1/m
+		if tijd[t] < t1:
+			acceleration_part = 3.5 * tijd[t] ** 3 / 6 / m
+			position[t] = start_positie + start_snelheid * tijd[t] + acceleration_part
+		else:
+			position[t] = (3.5 * 1000 / 6 + tijd[t] ** 2 / 2 + 165 * tijd[t] - 1700) / m
 	return position
 
 
@@ -65,19 +77,15 @@ def versnelling(t):
 	:return:
 	"""
 	global m
-	f = np.cos(t)
-	a = f / m
+	f = 3.5 * t
+	a = f/m
 	return a
 
 
-# === Returns ===
-# n = numeriek(x0, v0, 0, time)
-# n -= analytisch(x0, v0, 0, time)
-
 # === Prints ===
-print(f'Positie voor t = {6.1} volgens numerieke integratie: {numeriek(x0, v0, time)[61]}')
-print(f'Positie voor t = {6.1} volgens analytische benadering: {analytisch(x0, v0, time)[61]}')
-print(f'Verschil voor t = 6.1 : {abs(numeriek(x0, v0, time)[61]-analytisch(x0, v0, time)[61])}')
+print(f'Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[-1]}')
+print(f'Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[-1]}')
+print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[-1]-analytisch(x0, v0, time)[-1])}')
 
 # === Plots ===
 fig, ax = plt.subplots(1, 2)
