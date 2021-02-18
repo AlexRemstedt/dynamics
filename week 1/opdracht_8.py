@@ -1,9 +1,6 @@
 """
-	Author : Alex Remstedt
-	Opdrachten: 8
-
-	To Do:
-		TODO: form analytical == numeric, but size !=.
+Author : Alex Remstedt  \n
+Opdrachten: 8
 """
 # === Imports ===
 import numpy as np
@@ -48,13 +45,13 @@ def numeriek(start_positie, start_snelheid, tijd):
 	snelheid[0] = start_snelheid
 
 	for t in range(len(tijd) - 1):
-		if tijd[t] < t1:
+		if tijd[t] <= t1:
 			acceleratie[t] = versnelling(tijd[t])
 		else:
 			acceleratie[t] = 0
 		snelheid[t + 1] = snelheid[t] + acceleratie[t] * dt
 		positie[t + 1] = positie[t] + snelheid[t] * dt
-	return positie
+	return positie, snelheid
 
 
 def analytisch(start_positie, start_snelheid, tijd):
@@ -106,14 +103,14 @@ def versnelling(t):
 
 
 # === Prints ===
-print(f'Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[-1]}')
+print(f'Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[0][-1]}')
 print(f'Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[-1]}')
-print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[-1]-analytisch(x0, v0, time)[-1])}')
+print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[0][-1]-analytisch(x0, v0, time)[-1])}')
 
 # === Plots ===
 fig, ax = plt.subplots(1, 2)
-ax[0].plot(time, numeriek(x0, v0, time))  # Plot de numerieke resultaten
+ax[0].plot(time, numeriek(x0, v0, time)[0])  # Plot de numerieke resultaten
 ax[0].plot(time, analytisch(x0, v0, time), 'y--')  # Plot analytische resultaten als gele stippellijn
-ax[1].plot(time, abs(numeriek(x0, v0, time) - analytisch(x0, v0, time)))  # Plot het verschil
+ax[1].plot(time, abs(numeriek(x0, v0, time)[0] - analytisch(x0, v0, time)))  # Plot het verschil
 
 plt.show()
