@@ -36,7 +36,7 @@ def numeriek(start_positie, start_snelheid, tijd):
 	:return: 				De posities op elk tijdstip in een np.array door middel van numerieke integratie
 	"""
 	# Function variables
-	global dt, t1
+	global dt, t1, m
 
 	positie = np.zeros(len(tijd))
 	snelheid = np.zeros(len(tijd))
@@ -49,7 +49,7 @@ def numeriek(start_positie, start_snelheid, tijd):
 		if tijd[t] <= t1:
 			acceleratie[t] = versnelling(tijd[t])
 		else:
-			acceleratie[t] = 0
+			acceleratie[t] = 0.25 * tijd[t] ** 3 / m
 		snelheid[t + 1] = snelheid[t] + acceleratie[t] * dt
 		positie[t + 1] = positie[t] + snelheid[t] * dt
 	return positie, snelheid
@@ -83,11 +83,11 @@ def analytisch(start_positie, start_snelheid, tijd):
 	position = np.zeros(len(tijd))  # Position vector
 
 	for t in range(len(tijd)):
-		if tijd[t] < t1:
+		if tijd[t] <= t1:
 			acceleration_part = 3.5 * tijd[t] ** 3 / 6 / m
 			position[t] = start_positie + start_snelheid * tijd[t] + acceleration_part
 		else:
-			position[t] = (3.5 * 1000 / 6 + tijd[t] ** 2 / 2 + 165 * tijd[t] - 1700) / m
+			position[t] = (11500/3 + (tijd[t] ** 5)/80 - 450*tijd[t]) / m
 	return position
 
 
