@@ -25,13 +25,17 @@ time = np.linspace(t_begin, t_end, 1 + round((t_end - t_begin) / dt))  # time
 # === Functions ===
 def numeriek(start_positie, start_snelheid, tijd):
 	"""
-	:param start_positie: De start positie
-	:type start_positie: float
-	:param start_snelheid: De start snelheid
-	:type start_snelheid: float
-	:param tijd: Tijd (in vector vorm)
-	:type tijd: np.ndarray
-	:return: De posities op elk tijdstip in een np.array door middel van numerieke integratie
+	Numerieke integratie:
+	De functie numeriek integreert numeriek over tijd. Om de acceleratie te bepalen neemt hij voor 0 < t < 10 deze van
+	versnelling().
+
+	:param start_positie: 	De start positie
+	:type start_positie: 	float
+	:param start_snelheid: 	De start snelheid
+	:type start_snelheid: 	float
+	:param tijd: 			Tijd (in vector vorm)
+	:type tijd: 			np.ndarray
+	:return: 				De posities op elk tijdstip in een np.array door middel van numerieke integratie
 	"""
 	# Function variables
 	global dt, t1
@@ -55,13 +59,27 @@ def numeriek(start_positie, start_snelheid, tijd):
 
 def analytisch(start_positie, start_snelheid, tijd):
 	"""
-	:param start_positie: beginpositie
-	:type start_positie: float
-	:param start_snelheid: beginsnelheid
-	:type start_snelheid: float
-	:param tijd: tijd
-	:type tijd: numpy.array
-	:return:
+	Bij analystisch wordt de positie van een object bepaald met behulp van een van te vorne geintegreerde formule op
+	analytische wijze.
+
+	D_t = [0, 10]
+		a(t) = 3.5 t / m  			[m/s^2] \n
+		v(t) = 1.75 t^2 / m  		[m/s]	\n
+		s(t) = 0.5833.. t^3 / m 	[m]		\n
+
+	D_t = [10, 20]
+		a(t) = 0					[m/s^2]	\n
+		v(t) = v_10 		(van ^)	[m/s]	\n
+		s(t) = heel veeel moeilijk
+
+	:param start_positie: 	beginpositie
+	:type start_positie: 	float
+	:param start_snelheid: 	beginsnelheid
+	:type start_snelheid: 	float
+	:param tijd: 			een lijst met verschillende tijden
+	:type tijd: 			np.ndarray
+
+	:return: 				Positie van object over tijd in een np.ndarray
 	"""
 	global m, t1
 	position = np.zeros(len(tijd))  # Position vector
@@ -77,9 +95,9 @@ def analytisch(start_positie, start_snelheid, tijd):
 
 def versnelling(t):
 	"""
-	:param t: tijd
-	:type t: float
-	:return: the acceleration at t
+	:param t: 	tijd
+	:type t: 	float
+	:return: 	the acceleration at t
 	"""
 	global m
 	f = 3.5 * t
