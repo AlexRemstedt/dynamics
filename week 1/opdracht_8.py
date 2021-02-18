@@ -1,3 +1,4 @@
+# -*- Coding: utf-8 -*-
 """
 Author : Alex Remstedt  \n
 Opdrachten: 8
@@ -60,14 +61,14 @@ def analytisch(start_positie, start_snelheid, tijd):
 	analytische wijze.
 
 	D_t = [0, 10]
-		a(t) = 3.5 t / m  			[m/s^2] \n
-		v(t) = 1.75 t^2 / m  		[m/s]	\n
-		s(t) = 0.5833.. t^3 / m 	[m]		\n
+		a(t) = 3.5 t / m  							[m/s^2] \n
+		v(t) = 1.75 t^2 / m  						[m/s]	\n
+		s(t) = 0.5833.. t^3 / m 					[m]		\n
 
 	D_t = [10, 20]
-		a(t) = 0					[m/s^2]	\n
-		v(t) = v_10 		(van ^)	[m/s]	\n
-		s(t) = heel veeel moeilijk
+		a(t) = 0.25 t^3 / m							[m/s^2] \n
+		v(t) = (0.0625 t^4 - 450) / m				[m/s]	\n
+		s(t) = (0.0125 t^5 - 450 t + 11500/3) / m	[m]		\n
 
 	:param start_positie: 	beginpositie
 	:type start_positie: 	float
