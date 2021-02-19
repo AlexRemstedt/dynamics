@@ -21,10 +21,7 @@ Vragen:
     a) Wat is de numerieke waarde van de snelheid van de boot bij de derde boei (3000 m)?
 """
 # Imports
-from opdracht_1 import Kinetics
 import numpy as np
 
 
-opdracht2 = Kinetics(v0=4.5, mass=105)
 
-print(np.interp(opdracht2.numeric_position(), 3000, opdracht2.))
