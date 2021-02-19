@@ -8,14 +8,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # === Variables ===
-dt = 0.1  		# [s] grootte van tijdstappen
-t_begin = 0  	# [s] Starttijd van simulatie
-t1 = 10			# [s] time in between
-t_end = 18.8  	# [s] Eindtijd van sim
-x0 = 0  		# [m] beginpositie
-v0 = 0  		# [m/s] beginsnelheid
-a0 = -9.81  	# [m/s^2] beginacceleratie
-m = 6.0  		# [kg] massa
+dt = 0.1  # [s] grootte van tijdstappen
+t_begin = 0  # [s] Starttijd van simulatie
+t1 = 10  # [s] time in between
+t_end = 18.8  # [s] Eindtijd van sim
+x0 = 0  # [m] beginpositie
+v0 = 0  # [m/s] beginsnelheid
+a0 = -9.81  # [m/s^2] beginacceleratie
+m = 6.0  # [kg] massa
 
 time = np.linspace(t_begin, t_end, 1 + round((t_end - t_begin) / dt))  # time
 
@@ -80,15 +80,18 @@ def analytisch(start_positie, start_snelheid, tijd):
 	:return: 				Positie van object over tijd in een np.ndarray
 	"""
 	global m, t1
+	speed = np.zeros(len(tijd))
 	position = np.zeros(len(tijd))  # Position vector
 
 	for t in range(len(tijd)):
 		if tijd[t] <= t1:
 			acceleration_part = 3.5 * tijd[t] ** 3 / 6 / m
+			speed[t] = 1.75 * tijd[t] ** 2 / m
 			position[t] = start_positie + start_snelheid * tijd[t] + acceleration_part
 		else:
-			position[t] = (11500/3 + (tijd[t] ** 5)/80 - 450*tijd[t]) / m
-	return position
+			speed[t] = (tijd[t] ** 4 / 16 - 450) / m
+			position[t] = (11500 / 3 + (tijd[t] ** 5) / 80 - 450 * tijd[t]) / m
+	return position, speed
 
 
 def versnelling(t):
@@ -99,19 +102,21 @@ def versnelling(t):
 	"""
 	global m
 	f = 3.5 * t
-	a = f/m
+	a = f / m
 	return a
 
 
 # === Prints ===
 print(f'Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[0][-1]}')
-print(f'Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[-1]}')
-print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[0][-1]-analytisch(x0, v0, time)[-1])}')
+print(f'Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[0][-1]}')
+print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[0][-1] - analytisch(x0, v0, time)[0][-1])}')
+print(f'Velocity for t = 18.8: {analytisch(x0, v0, time)[1][-1]}')
+print(f'Velocity for t = 18.8: {numeriek(x0, v0, time)[1][-1]}')
 
 # === Plots ===
 fig, ax = plt.subplots(1, 2)
 ax[0].plot(time, numeriek(x0, v0, time)[0])  # Plot de numerieke resultaten
-ax[0].plot(time, analytisch(x0, v0, time), 'y--')  # Plot analytische resultaten als gele stippellijn
-ax[1].plot(time, abs(numeriek(x0, v0, time)[0] - analytisch(x0, v0, time)))  # Plot het verschil
-
+ax[0].plot(time, analytisch(x0, v0, time)[0], 'y--')  # Plot analytische resultaten als gele stippellijn
+ax[1].plot(time, analytisch(x0, v0, time)[1], 'y--')  # Plot het verschil
+ax[1].plot(time, numeriek(x0, v0, time)[1])
 plt.show()
