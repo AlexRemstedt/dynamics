@@ -16,9 +16,13 @@ Opdracht beschrijving:
 Vragen:
     a) Wat is de versnelling van de boot in [m/s^2]
     b) Wat is het numerieke resultaat voor de snelheid van de boot na t = 154.3 seconden?
+    c) Wat is het analytische resultaat voor de positie van de boot na 154.3 seconden?
+    d) Vergelijk de analytische en de numerieke oplossingen van de positie van de boot na 154.3 seconden. Wat is de absolute grootte van de fout?
+    e) Maak een plot met de snelheid op de verticale as en de positie op de horizontale as. Hoe ziet deze plot eruit?
 """
 # Imports
 import numpy as np
+from matplotlib import pyplot as plt
 
 
 class Kinetics(object):
@@ -61,19 +65,18 @@ class Kinetics(object):
         :type time: float
         :return: The force at given time in [N] as float.
         """
-        if equation == None:
-            raise Error
-        if equation == 1:
+        if equation is None:
+            raise TypeError
+        elif equation == 1:
             return 11  # [N]
         elif equation == 2:
             return None  # TODO: insert equation
-        else:
-            raise AttributeError
 
     def numeric_analysis(self):
         """
-        # TODO
-        :return:
+        Calculate position, velocity and acceleration by method of numerical integration
+
+        :return: position, velocity, acceleration
         """
         position = np.zeros(len(self.time))
         velocity = np.zeros(len(self.time))
@@ -93,14 +96,77 @@ class Kinetics(object):
 
         return position, velocity, acceleration
 
+    def analytic_analysis(self):
+        """
+        Calculate position, velocity and acceleration by method of analytical integration by hand.
+
+        :return: position, velocity, acceleration
+        """
+        # Position
+        position = np.zeros(len(self.time))
+        velocity = np.zeros(len(self.time))
+        acceleration = np.zeros(len(self.time))
+
+        position[0] = self.startPosition
+        velocity[0] = self.startSpeed
+        acceleration[0] = self.startAcceleration
+        for n in range(len(self.time)):
+            if self.time[n] <= self.timeList[1]:
+                acceleration[n] = 11 / self.mass
+                velocity[n] = 11 * self.time[n] / self.mass + self.startSpeed
+                position[n] = self.time[n] ** 2 * 11 / 2 / self.mass + \
+                              self.startSpeed * self.time[n] + self.startPosition
+            else:
+                pass
+        return position, velocity, acceleration
+
     # Easy methods (front-end
+    def analytic_position(self):
+        """
+        Return the analytic position from analytic_analysis().
+
+        :return: Position be analytic integration
+        """
+        return self.analytic_analysis()[0]
+
+    def analytic_velocity(self):
+        """
+        Return the analytic velocity from analytic_analysis().
+
+        :return: Velocity be analytic integration
+        """
+        return self.analytic_analysis()[1]
+
+    def analytic_acceleration(self):
+        """
+        Return the analytic acceleration from analytic_analysis().
+
+        :return: Acceleration be analytic integration
+        """
+        return self.analytic_analysis()[2]
+
     def numeric_position(self):
+        """
+        Return the numerical position from numeric_analysis().
+
+        :return: Position by numerical integration
+        """
         return self.numeric_analysis()[0]
 
     def numeric_velocity(self):
+        """
+        Return the numerical velocity from numeric_analysis().
+
+        :return: Velocity by numerical integration
+        """
         return self.numeric_analysis()[1]
 
     def numeric_acceleration(self):
+        """
+        Return the numerical acceleration from numeric_analysis().
+
+        :return: Acceleration by numerical integration
+        """
         return self.numeric_analysis()[2]
 
 
@@ -108,6 +174,12 @@ opdracht1 = Kinetics(v0=4.5,
                      mass=105,
                      time=[0, 154.3],
                      dt=0.1)
+# Answers
+print(f'a: {opdracht1.analytic_acceleration()[-1]}')
+print(f'b: {opdracht1.numeric_velocity()[-1]}')
+print(f'c: {opdracht1.analytic_position()[-1]}')
+print(f'd: {abs(opdracht1.numeric_position()[-1] - opdracht1.analytic_position()[-1])}')
 
-print(opdracht1.numeric_velocity()[-1])
-print(opdracht1.numeric_position()[-1])
+fig, ax = plt.subplots(1)
+plt.plot(opdracht1.numeric_position(), opdracht1.numeric_velocity())  # e
+plt.show()
