@@ -44,7 +44,7 @@ class Kinetics(object):
         :type dt: float
         """
         if time is None:
-            time = [0, 0]
+            time = [0, 200]
         self.startPosition = x0
         self.startSpeed = v0
         self.startAcceleration = a0
@@ -102,7 +102,7 @@ class Kinetics(object):
 
         :return: position, velocity, acceleration
         """
-        # Position
+        # Empty vectors
         position = np.zeros(len(self.time))
         velocity = np.zeros(len(self.time))
         acceleration = np.zeros(len(self.time))
