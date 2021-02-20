@@ -19,9 +19,22 @@ Opdracht beschrijving:
 \
 Vragen:
     a) Wat is de numerieke waarde van de snelheid van de boot bij de derde boei (3000 m)?
+    b) Hoe lang duurde het voordat de boot de tweede boei (2000 m) bereikte? Gebruik hiervoor ook de numerieke oplossing.
+    c) Bereken de snelheid van de boot bij de derde boei (3000 m) en bereken de afwijking tussen de analytische en de numerieke oplossing. Wat is de absolute grootte van deze fout?
+
+To Do:
 """
 # Imports
+from Kinematics import Kinematics
 import numpy as np
 
+opdracht2 = Kinematics(v0=4.5, mass=105)
 
+a = np.interp(x=3000, xp=opdracht2.numeric_position(), fp=opdracht2.numeric_velocity())
+b = np.interp(x=2000, xp=opdracht2.numeric_position(), fp=opdracht2.time)
+c = abs(a - 25.47197339)
 
+# Prints
+print(f'a: {a}')
+print(f'b: {b}')
+print('{0:.20f}'.format(c))
