@@ -21,8 +21,6 @@ Vragen:
     a) Wat is de numerieke waarde van de snelheid van de boot bij de derde boei (3000 m)?
     b) Hoe lang duurde het voordat de boot de tweede boei (2000 m) bereikte? Gebruik hiervoor ook de numerieke oplossing.
     c) Bereken de snelheid van de boot bij de derde boei (3000 m) en bereken de afwijking tussen de analytische en de numerieke oplossing. Wat is de absolute grootte van deze fout?
-
-To Do:
 """
 # Imports
 from Kinematics import Kinematics
