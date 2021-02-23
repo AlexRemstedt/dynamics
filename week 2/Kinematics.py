@@ -7,7 +7,7 @@ import numpy as np
 
 
 class Kinematics(object):
-    def __init__(self, x0=0, v0=0, a0=0, mass=0, time=None, dt=0.1):
+    def __init__(self, x0=0, v0=0, a0=0, mass=0, time=None, dt=0.1, formula=None):
         """
         __init__ function
 
@@ -33,25 +33,21 @@ class Kinematics(object):
         self.timeList = time
         self.timeStep = dt
         self.time = np.linspace(time[0], time[-1], 1 + round((time[-1] - time[0]) / dt))
+        self.formula = formula
 
     # Usefull methods (back-end)
-    @staticmethod
-    def force(equation=None, time=None):
-        """
-        Calculate the force where time is a parameter.
 
-        :param equation: Equation chooser.
-        :type equation: int
-        :param time: (optional) The time at which the force must be calculated.
-        :type time: float
-        :return: The force at given time in [N] as float.
+    # Formula picker
+    def formula_picker(self):
         """
-        if equation is None:
-            raise TypeError
-        elif equation == 1:
-            return 11  # [N]
-        elif equation == 2:
-            return None
+        Choose a formula.
+
+        :return: corresponding formula.
+        """
+        if self.formula is None:
+            return 0
+        elif self.formula == 1:
+            return ForceFormulas.formula_1()
 
     def numeric_analysis(self):
         """
@@ -69,9 +65,9 @@ class Kinematics(object):
 
         for n in range(len(self.time) - 1):
             if self.time[n] <= self.timeList[1]:
-                acceleration[n] = self.force(1, self.time[n]) / self.mass
+                acceleration[n] = self.formula_picker() / self.mass
             else:
-                acceleration[n] = self.force(2, self.time[n]) / self.mass
+                acceleration[n] = self.formula_picker() / self.mass  
             velocity[n + 1] = velocity[n] + acceleration[n] * self.timeStep
             position[n + 1] = position[n] + velocity[n] * self.timeStep
 
@@ -96,7 +92,7 @@ class Kinematics(object):
                 acceleration[n] = 11 / self.mass
                 velocity[n] = 11 * self.time[n] / self.mass + self.startSpeed
                 position[n] = self.time[n] ** 2 * 11 / 2 / self.mass + \
-                              self.startSpeed * self.time[n] + self.startPosition
+                    self.startSpeed * self.time[n] + self.startPosition
             else:
                 pass
         return position, velocity, acceleration
@@ -149,3 +145,20 @@ class Kinematics(object):
         :return: Acceleration by numerical integration
         """
         return self.numeric_analysis()[2]
+
+
+class ForceFormulas(Kinematics):
+    def __init__(self, time):
+        super().__init__(time)
+
+    @staticmethod
+    def formula_1():
+        """
+        Calculate the force where time is a parameter.
+
+        In formula_1 (not a reference to the autosport)
+
+        :return: The force at given time in [N] as float.
+        """
+        return 11
+    # Function no 2 = formula2
