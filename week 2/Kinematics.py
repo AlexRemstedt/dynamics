@@ -85,6 +85,7 @@ class Kinematics(object):
         position[0] = self.startPosition
         velocity[0] = self.startSpeed
         acceleration[0] = self.startAcceleration
+
         for n in range(len(self.time)):
             if self.time[n] <= self.timeList[1]:
                 acceleration[n] = 11 / self.mass
@@ -159,4 +160,3 @@ class ForceFormulas(Kinematics):
         :return: The force at given time in [N] as float.
         """
         return 11
-    # Function no 2 = formula2
