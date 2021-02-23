@@ -28,7 +28,8 @@ from Kinematics import Kinematics
 opdracht1 = Kinematics(v0=4.5,
                        mass=105,
                        time=[0, 154.3],
-                       dt=0.1)
+                       dt=0.1,
+                       formula=1)
 # Answers
 print(f'a: {opdracht1.analytic_acceleration()[-1]}')
 print(f'b: {opdracht1.numeric_velocity()[-1]}')

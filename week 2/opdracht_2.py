@@ -26,7 +26,7 @@ Vragen:
 from Kinematics import Kinematics
 import numpy as np
 
-opdracht2 = Kinematics(v0=4.5, mass=105)
+opdracht2 = Kinematics(v0=4.5, mass=105, formula=1)
 
 a = np.interp(x=3000, xp=opdracht2.numeric_position(), fp=opdracht2.numeric_velocity())
 b = np.interp(x=2000, xp=opdracht2.numeric_position(), fp=opdracht2.time)
