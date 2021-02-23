@@ -36,8 +36,6 @@ class Kinematics(object):
         self.formula = formula
 
     # Usefull methods (back-end)
-
-    # Formula picker
     def formula_picker(self):
         """
         Choose a formula.
@@ -67,7 +65,7 @@ class Kinematics(object):
             if self.time[n] <= self.timeList[1]:
                 acceleration[n] = self.formula_picker() / self.mass
             else:
-                acceleration[n] = self.formula_picker() / self.mass  
+                acceleration[n] = self.formula_picker() / self.mass
             velocity[n + 1] = velocity[n] + acceleration[n] * self.timeStep
             position[n + 1] = position[n] + velocity[n] * self.timeStep
 
