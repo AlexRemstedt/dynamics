@@ -30,7 +30,7 @@ opdracht2 = Kinematics(v0=4.5, mass=105, formula=1)
 
 a = np.interp(x=3000, xp=opdracht2.numeric_position(), fp=opdracht2.numeric_velocity())
 b = np.interp(x=2000, xp=opdracht2.numeric_position(), fp=opdracht2.time)
-c = abs(a - 25.47197339)
+c = abs(a - 25.47608589)
 
 # Prints
 print(f'a: {a}')

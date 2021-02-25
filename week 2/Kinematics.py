@@ -25,7 +25,7 @@ class Kinematics(object):
         :type dt: float
         """
         if time is None:
-            time = [0, 200]
+            time = [0, 400]
         self.startPosition = x0
         self.startSpeed = v0
         self.startAcceleration = a0
