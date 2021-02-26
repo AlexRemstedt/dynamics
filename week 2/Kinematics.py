@@ -1,6 +1,6 @@
 """
 Alex Remstedt
-Kinematics
+Kinematics is a class which calculates the kinematic values.
 """
 # Imports
 import numpy as np
@@ -166,10 +166,11 @@ class ForceFormula(Kinematics):
     @staticmethod
     def formula_2(v):
         """
-        F_ship is the resistance force of the ship.
+        F_ship is the resistance force of the ship as a function of the speed.
+
         :param v: velocity
-        :
-        :return:
+        :type v: int
+        :return: Frictional force
         """
         return -100 * v ** 3
 
