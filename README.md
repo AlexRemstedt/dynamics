@@ -29,7 +29,7 @@ def afgeleiden(state, t):
     return [v, a]
 ```
 
-```
+```python
 def numeriek(t, begin_y, begin_v):
     y_num = np.full(len(t), begin_y)
     v_num = np.full(len(t), begin_v)
