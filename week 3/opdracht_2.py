@@ -25,7 +25,7 @@ t = np.linspace(t0, t1, round(1 + (t1 - t0) / (dt)))
 
 def afgeleiden(state, t):
     """
-    Afgeleiden calculates the derivatives.
+    Afgeleiden calculates the derivatives
 
     :param state: A list containing [position, speed]
     :type state: list
@@ -35,17 +35,20 @@ def afgeleiden(state, t):
     """
     y = state[0]
     v = state[1]
-    a = k * v / m
+    a = g
     return [v, a]
 
 
 def numeriek(t, begin_y, begin_v):
     """
 
-    :param t:
-    :param begin_y:
-    :param begin_v:
-    :return:
+    :param t: tijd
+    :param begin_y: begin positie
+    :param begin_v: begin snelheid
+    :type t: float
+    :type begin_y: float
+    :type begin_v: float
+    :return: numeric integration of the position and the veloctiy
     """
     y_num = np.full(len(t), begin_y)
     v_num = np.full(len(t), begin_v)
@@ -57,15 +60,15 @@ def numeriek(t, begin_y, begin_v):
     return y_num, v_num
 
 
-y_numerical, v_numerical = numeriek(t, y0, v0)
+y_num, v_num = numeriek(t, y0, v0)
 
 # Prints
-print(y_numerical[-1])
+print(y_num[-1])
 
 # Plots
 fig, ax = plt.subplots(1, 2, figsize=(8, 3))
-ax[0].plot(t, y_numerical)
-ax[1].plot(t, v_numerical)
+ax[0].plot(t, y_num)
+ax[1].plot(t, v_num)
 ax[0].set_xlabel('tijd [s]')
 ax[1].set_xlabel('tijd [s]')
 ax[0].set_ylabel('positie [s]')
