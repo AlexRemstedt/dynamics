@@ -21,7 +21,7 @@ Opdracht bescrijving:
         vermenigvuldigingsfactor zijn waarbij de uitgaande pijl F_ship gelijk is aan de inkomende pijl (snelheid v_s)
         maal een constante weerstandsfactor. Als dit het geval zou zijn noemen we dit “Lineaire demping”. In de opgave
         vandaag zal de weerstand echter niet-linear afhangen van de snelheid. Dit is niet te zien in het blokkenschema,
-        maar de formule is als volgt: F_ship = 1000 * v_s^3
+        maar de formule is als volgt: F_ship = 100 * v_s^3
 
     3) Links midden: De wet van Newton Het blok links in het midden kan ook gezien worden als een soort
         vermenigvuldiging. Letterlijk staat er "neem de inkomende pijl (som van de krachten), vermenigvuldig dit met 1/m
@@ -48,5 +48,14 @@ import numpy as np
 
 opdracht3 = Kinematics(v0=10.0, time=[0, 20], mass=100_000, formula=2)
 
-print(f'a: {opdracht3.numeric_velocity()[-1]}')
-print(f'b: {np.interp(x=8, xp=opdracht3.time, fp=opdracht3.numeric_position())}')
+a = opdracht3.numeric_velocity()[-1]
+b = np.interp(x=8, xp=opdracht3.time, fp=opdracht3.numeric_position())
+c = abs(b - 61.24515497)
+opdracht3.timeStep = 10 ** -3
+d = abs(61.24515497 - np.interp(x=8, xp=opdracht3.time, fp=opdracht3.numeric_position()))
+
+print(f'a: {a}')
+print(f'b: {b}')
+print(f'c: {c}')
+print(f'd: {d}')
+
