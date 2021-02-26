@@ -36,7 +36,7 @@ class Kinematics(object):
         self.formula = formula
 
     # Usefull methods (back-end)
-    def formula_picker(self):
+    def formula_picker(self, velocity=None):
         """
         Choose a formula.
 
@@ -45,7 +45,9 @@ class Kinematics(object):
         if self.formula is None:
             return 0
         elif self.formula == 1:
-            return ForceFormulas.formula_1()
+            return ForceFormula.formula_1()
+        elif self.formula == 2:
+            return ForceFormula.formula_2(velocity)
 
     def numeric_analysis(self):
         """
@@ -63,7 +65,7 @@ class Kinematics(object):
 
         for n in range(len(self.time) - 1):
             if self.time[n] <= self.timeList[1]:
-                acceleration[n] = self.formula_picker() / self.mass
+                acceleration[n] = self.formula_picker(velocity[n]) / self.mass
             else:
                 acceleration[n] = self.formula_picker() / self.mass
             velocity[n + 1] = velocity[n] + acceleration[n] * self.timeStep
@@ -146,7 +148,7 @@ class Kinematics(object):
         return self.numeric_analysis()[2]
 
 
-class ForceFormulas(Kinematics):
+class ForceFormula(Kinematics):
     def __init__(self, time):
         super().__init__(time)
 
@@ -160,3 +162,14 @@ class ForceFormulas(Kinematics):
         :return: The force at given time in [N] as float.
         """
         return 11
+
+    @staticmethod
+    def formula_2(v):
+        """
+        F_ship is the resistance force of the ship.
+        :param v: velocity
+        :
+        :return:
+        """
+        return -100 * v ** 3
+
