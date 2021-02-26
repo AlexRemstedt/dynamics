@@ -2,8 +2,8 @@
 De Python code behorend bij het vak Dynamica. 
 
 ### Gebruikte Packages:
-- [numpy](https://numpy.org/)
-- [matplotlib](https://matplotlib.org/stable/index.html)
+- [NumPy](https://numpy.org/)
+- [MatPlotLib](https://matplotlib.org/stable/index.html)
 
 ## [Week 1](https://github.com/AlexRemstedt/dynamics/tree/master/week%201)
 In week 1 is er vooral veel aandacht besteed aan numeriek integreren:
