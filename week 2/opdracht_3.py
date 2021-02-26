@@ -46,16 +46,13 @@ Vragen:
 from Kinematics import Kinematics
 import numpy as np
 
-opdracht3 = Kinematics(v0=10.0, time=[0, 20], mass=100_000, formula=2)
+opdracht3 = Kinematics(v0=10.0, time=[0, 20], mass=100_000, formula=2)  # dt=0.001)
 
 a = opdracht3.numeric_velocity()[-1]
 b = np.interp(x=8, xp=opdracht3.time, fp=opdracht3.numeric_position())
 c = abs(b - 61.24515497)
-opdracht3.timeStep = 10 ** -3
-d = abs(61.24515497 - np.interp(x=8, xp=opdracht3.time, fp=opdracht3.numeric_position()))
 
 print(f'a: {a}')
 print(f'b: {b}')
 print(f'c: {c}')
-print(f'd: {d}')
 
