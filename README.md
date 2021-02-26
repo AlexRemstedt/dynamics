@@ -19,4 +19,25 @@ for i in range(len(time) - 1):
 In week 2 komt ook de `np.interp` meekijken, dit helpt bij het zoeken vn bijvoorbeel de tijd die hoort bij een bepaalde positie. Ik heb voor deze week een class structure gemaakt, waarbij Kinematics de integraties vooral doet en ForceFormula de krachten. De laatste opdracht van week 3 is er een extra moeilijkheidsgraad toegevoegd, want de kracht hangt nu af van de snelheid, waardoor een extra loop ontstaat.
 
 ## [Week 3](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
-In week 3 komt het volgende aan bod.
+In week 3 worden er functies gegeven aan ons van [F.G.J. Broeren](https://www.tudelft.nl/en/3me/about/departments/precision-and-microsystems-engineering-pme/people/junior-research-staff/broeren-freek/), die er als volgd uitzien:
+```python
+
+def afgeleiden(state, t):
+    y = state[0]
+    v = state[1]
+    a = g
+    return [v, a]
+```
+
+```
+def numeriek(t, begin_y, begin_v):
+    y_num = np.full(len(t), begin_y)
+    v_num = np.full(len(t), begin_v)
+    for n in range(len(t) - 1):
+        dt = t[n + 1] - t[n]
+        snelheid, versnelling = afgeleiden([y_num[n], v_num[n]], t[n])
+        y_num[n + 1] = y_num[n] + snelheid * dt
+        v_num[n + 1] = v_num[n] + versnelling * dt
+    return y_num, v_num
+
+```
