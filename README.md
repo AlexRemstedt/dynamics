@@ -18,7 +18,7 @@ for i in range(len(time) - 1):
 In week 2 komt ook de `np.interp` meekijken, dit helpt bij het zoeken vn bijvoorbeel de tijd die hoort bij een bepaalde positie. Ik heb voor deze week een class structure gemaakt, waarbij Kinematics de integraties vooral doet en ForceFormula de krachten. De laatste opdracht van week 3 is er een extra moeilijkheidsgraad toegevoegd, want de kracht hangt nu af van de snelheid, waardoor een extra loop ontstaat.
 
 ## [Week 3](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
-In week 3 worden er functies gegeven aan ons van [F.G.J. Broeren](https://www.tudelft.nl/en/3me/about/departments/precision-and-microsystems-engineering-pme/people/junior-research-staff/broeren-freek/), die er als volgd uitzien:
+In week 3 worden er functies gegeven aan ons van [F.G.J. Broeren](https://www.tudelft.nl/en/3me/about/departments/precision-and-microsystems-engineering-pme/people/junior-research-staff/broeren-freek/), die er zo uitzien:
 
 ```python
 def afgeleiden(state, t):
@@ -40,3 +40,5 @@ def numeriek(t, begin_y, begin_v):
     return y_num, v_num
 
 ```
+
+Voor opdracht 2 moet er een oscilerende beweging ontstaan. Dit wordt gedaan door `a = -omega_n ** 2 * y`, waarbij `omega_n = np.sqrt(k/m)`.
