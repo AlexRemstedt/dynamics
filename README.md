@@ -9,7 +9,6 @@ De Python code behorend bij het vak Dynamica.
 In week 1 is er vooral veel aandacht besteed aan numeriek integreren:
 
 ```python
-
 for i in range(len(time) - 1):
     v[i + 1] = v[i] + a[i] * dt
     s[i + 1] = s[i] + v[i] * dt
@@ -20,8 +19,8 @@ In week 2 komt ook de `np.interp` meekijken, dit helpt bij het zoeken vn bijvoor
 
 ## [Week 3](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
 In week 3 worden er functies gegeven aan ons van [F.G.J. Broeren](https://www.tudelft.nl/en/3me/about/departments/precision-and-microsystems-engineering-pme/people/junior-research-staff/broeren-freek/), die er als volgd uitzien:
-```python
 
+```python
 def afgeleiden(state, t):
     y = state[0]
     v = state[1]

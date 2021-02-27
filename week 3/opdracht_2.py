@@ -3,7 +3,7 @@ Alex Remstedt
 26/02/2021
 
 Week 1 - Opdracht 1: Massa-Veer Systeem
-https://secure.ans-delft.nl/universities/1/courses/63457/assignments/200359/quiz/show/38474115
+https://secure.ans-delft.nl/universities/1/courses/63457/assignments/200359/quiz/show/38474116
 """
 # Imports
 import numpy as np
@@ -18,6 +18,7 @@ t0 = 0  # s
 t1 = 10  # s
 y0 = 0.6  # m
 v0 = 0.7  # m/s
+omega_n = np.sqrt(k/m)
 
 # maak de lijsten aan
 t = np.linspace(t0, t1, round(1 + (t1 - t0) / (dt)))
@@ -35,7 +36,7 @@ def afgeleiden(state, t):
     """
     y = state[0]
     v = state[1]
-    a = g
+    a = -omega_n ** 2 * y
     return [v, a]
 
 
@@ -57,6 +58,8 @@ def numeriek(t, begin_y, begin_v):
         snelheid, versnelling = afgeleiden([y_num[n], v_num[n]], t[n])
         y_num[n + 1] = y_num[n] + snelheid * dt
         v_num[n + 1] = v_num[n] + versnelling * dt
+        if y_num[n] * y_num[n + 1] < 0:
+            print(t[n])
     return y_num, v_num
 
 
