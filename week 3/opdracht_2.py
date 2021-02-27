@@ -2,7 +2,7 @@
 Alex Remstedt
 26/02/2021
 
-Week 1 - Opdracht 1: Massa-Veer Systeem
+Week 3 - Opdracht 2: Massa-Veer Systeem -- Zonder Zwaartekracht
 https://secure.ans-delft.nl/universities/1/courses/63457/assignments/200359/quiz/show/38474116
 """
 # Imports
