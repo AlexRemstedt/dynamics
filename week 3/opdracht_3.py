@@ -10,14 +10,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Vars
-m = 9  # kg
-k = 146  # N/m
+m = 10  # kg
+k = 110  # N/m
 g = 0  # m/s^2
 dt = 0.001  # s
 t0 = 0  # s
 t1 = 10  # s
 y0 = 0.6  # m
-v0 = 0.7  # m/s
+v0 = 0.5  # m/s
 omega_n = np.sqrt(k/m)
 
 # maak de lijsten aan
@@ -58,15 +58,15 @@ def numeriek(t, begin_y, begin_v):
         snelheid, versnelling = afgeleiden([y_num[n], v_num[n]], t[n])
         y_num[n + 1] = y_num[n] + snelheid * dt
         v_num[n + 1] = v_num[n] + versnelling * dt
-        if y_num[n] * y_num[n + 1] < 0:
-            print(t[n])
     return y_num, v_num
 
 
 y_num, v_num = numeriek(t, y0, v0)
 
 # Prints
-print(y_num[-1])
+print(f"a: {omega_n/np.pi/2}")
+print(f"b: {v0/omega_n}")
+print(f"c: {y0}")
 
 # Plots
 fig, ax = plt.subplots(1, 2, figsize=(8, 3))
@@ -76,4 +76,4 @@ ax[0].set_xlabel('tijd [s]')
 ax[1].set_xlabel('tijd [s]')
 ax[0].set_ylabel('positie [s]')
 ax[1].set_ylabel('snelheid [m/s]')
-plt.show()
+# plt.show()
