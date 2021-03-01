@@ -21,7 +21,7 @@ v0 = 0.5  # m/s
 omega_n = np.sqrt(k/m)
 
 # maak de lijsten aan
-t = np.linspace(t0, t1, round(1 + (t1 - t0) / (dt)))
+t = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 
 def afgeleiden(state, t):
