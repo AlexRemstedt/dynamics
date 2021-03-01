@@ -19,6 +19,7 @@ t0 = 0          # s
 t1 = 10         # s
 y0 = 0.7        # m
 v0 = 0.6        # m/s
+omega_n = np.sqrt(k/m)
 
 # Tijdlijsten
 tijd = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
@@ -26,6 +27,8 @@ tijd = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 def ekin(v):
     return .5 * m * v ** 2
+
+
 
 
 def afgeleiden(state, t):
@@ -68,5 +71,10 @@ def numeriek(t, begin_y, begin_v):
 y_num, v_num = numeriek(tijd, y0, v0)
 
 # Antwoorden
-a =
+# a)
+plt.plot(tijd, ekin(v_num))
+plt.show()
+print(f'a) {ekin(v_num)[-1]}')
+
+# b)
 
