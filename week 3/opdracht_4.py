@@ -25,7 +25,6 @@ omega_n = np.sqrt(k/m)
 tijd = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 
-
 def afgeleiden(state, t):
     """
     Afgeleiden calculates the derivatives
