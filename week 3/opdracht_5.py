@@ -24,6 +24,10 @@ v0 = 0.6        # m/s
 tijd = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 
+def ekin(v):
+    return .5 * m * v ** 2
+
+
 def afgeleiden(state, t):
     """
     Afgeleiden calculates the derivatives
@@ -59,3 +63,10 @@ def numeriek(t, begin_y, begin_v):
         y_num[n + 1] = y_num[n] + snelheid * dt
         v_num[n + 1] = v_num[n] + versnelling * dt
     return y_num, v_num
+
+
+y_num, v_num = numeriek(tijd, y0, v0)
+
+# Antwoorden
+a =
+
