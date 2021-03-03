@@ -26,9 +26,27 @@ tijd = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 
 def ekin(v):
+    """
+    Kinetic Energy
+
+    :param v: velocity
+    :type v: np.ndarray
+    :return: Kinetic energy
+    """
     return .5 * m * v ** 2
 
 
+def epot(h):
+    """
+    Potential Energy
+
+    :param h: height
+    :type h: np.ndarray
+    :return:
+    """
+    grav = m * g * h
+    spring = -.5 * k * h ** 2
+    return grav + spring
 
 
 def afgeleiden(state, t):
@@ -73,8 +91,9 @@ y_num, v_num = numeriek(tijd, y0, v0)
 # Antwoorden
 # a)
 plt.plot(tijd, ekin(v_num))
-plt.show()
 print(f'a) {ekin(v_num)[-1]}')
 
 # b)
-
+plt.plot(tijd, epot(y_num))
+plt.show()
+print(f'b) {epot(y_num)[0] - epot(y_num[-1])}')
