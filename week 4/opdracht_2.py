@@ -141,7 +141,9 @@ plt.plot(time, v_num)
 plt.plot(time, a_num)
 # plt.show()
 
-c = np.interp(x=np.min(y_num), xp=y_num, fp=v_num)
-print(c)
-
 print(f'b) {np.min(y_num)}')
+
+# b)
+e = np.add(e_kin(v_num), e_pot(y_num))
+
+print(f'c) {abs(np.max(e) - e[0])}')
