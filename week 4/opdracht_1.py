@@ -63,6 +63,17 @@ def versnelling(y):
     return a
 
 
+def e_kin(v):
+    """
+    Calculate the kinetic energy
+
+    :param v: velocity
+
+    :return: kinetic energy
+    """
+    return 0.5 * m * v ** 2
+
+
 def numeriek(y0=0, v0=0, a0=0, t=None):
     """
     voer een numerieke Forward Euler methode uit om de plaats, snelheid en de versnelling van het deeltje te bepalen voor elk tijdstip in het
@@ -103,3 +114,4 @@ y_num, v_num, a_num = numeriek(y0, v0, a0, time)
 
 print(f'a) {y_num[-1]}')
 print(f'b) {b}')
+print(f'c) {e_kin(v_num)[-1]}')
