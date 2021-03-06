@@ -8,6 +8,7 @@ https://secure.ans-delft.nl/universities/1/courses/63457/assignments/213009/quiz
 # Imports
 import numpy as np
 
+
 # Variables
 m = 1.0         # kg
 g = 9.81        # m/s^2
@@ -17,6 +18,7 @@ t0 = 0          # s
 t1 = 1          # s
 dt = 0.001      # s
 
+time = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 # Functions
 def f_zwaartekracht():
@@ -33,10 +35,12 @@ def f_totaal(y):
     Tel de verschillende krachten die op het deeltje werken bij elkaar op
 
     :param y: Verplaatsing [m]
-    :type y:
+
+    :type y: float
+
     :return: Totale kracht
     """
-    f = None
+    f = f_zwaartekracht()
     return f
 
 
@@ -45,30 +49,47 @@ def versnelling(y):
     Bereken de versnelling van het deeltje op basis van de krachten die erop werken
 
     :param y: verplaatsing
-    :type y:
+
+    :type y: float
+
     :return: De acceleratie
     """
-    a = None
+    a = f_totaal(y)/m
     return a
 
 
-def numeriek(y0, v0, a0, t):
+def numeriek(y0=0, v0=0, a0=0, t=None):
     """
     voer een numerieke Forward Euler methode uit om de plaats, snelheid en de versnelling van het deeltje te bepalen voor elk tijdstip in het
 
-    :param y0:
-    :param v0:
-    :param a0:
-    :param t:
+    :param y0: Startpositie
+    :param v0: Startsnelheid
+    :param a0: Startversnelling
+    :param t: Tijd-array
 
-    :type y0:
-    :type v0:
-    :type a0:
-    :type t:
+    :type y0: float
+    :type v0: float
+    :type a0: float
+    :type t: np.ndarray
 
-    :return:
+    :return: positie, snelheid, versnelling
     """
-    y = None
-    v = None
-    a = None
-    return y, v, a
+    plaats = np.zeros(len(t))
+    snelheid = np.zeros(len(t))
+    acceleration = np.zeros(len(t))
+
+    plaats[0] = y0
+    snelheid[0] = v0
+    acceleration[0] = a0
+
+    for n in range(len(t) - 1):
+        acceleration[n + 1] = versnelling(plaats[n + 1])
+        snelheid[n + 1] = snelheid[n] + acceleration[n] * dt
+        plaats[n + 1] = plaats[n] + snelheid[n] * dt
+
+    return plaats, snelheid, acceleration
+
+
+y_num, v_num, a_num = numeriek(y0, v0, t=time)
+
+print(y_num[-1])
