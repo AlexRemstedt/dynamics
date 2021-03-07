@@ -156,7 +156,7 @@ ax = fig.add_subplot(1, 1, 1)
 ax.plot(time[index], f_floor(y_num[index]), '-o')
 plt.savefig('week 4/img/4_plot.png')
 
-# b
+# Answers
 print(f"""
 a) {dt:.10f}
 b) {time[index[-1]] - time[index[0]]}
