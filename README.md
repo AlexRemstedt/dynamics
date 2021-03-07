@@ -4,6 +4,7 @@ De Python code behorend bij het vak Dynamica.
 ### Gebruikte Packages:
 - [NumPy](https://numpy.org/)
 - [MatPlotLib](https://matplotlib.org/stable/index.html)
+- [SciPy](https://www.scipy.org/)
 
 ## [Week 1](https://github.com/AlexRemstedt/dynamics/tree/master/week%201)
 In week 1 is er vooral veel aandacht besteed aan numeriek integreren:
@@ -42,3 +43,6 @@ def numeriek(t, begin_y, begin_v):
 ```
 
 Voor opdracht 2 moet er een oscilerende beweging ontstaan. Dit wordt gedaan door `a = -omega_n ** 2 * y`, waarbij `omega_n = np.sqrt(k/m)`.
+
+## [Week 4](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
+In week 4 word er meer gekeken naar H15 met Energie en impuls (linear momentum)

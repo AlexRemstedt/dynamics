@@ -150,5 +150,7 @@ y_num, v_num, a_num, total_p = numeriek(y0, v0, a0, time)
 
 index = np.where(f_floor(y_num) > 0)[0]
 
-
-
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(1, 1, 1)
+ax.plot(time[index], f_floor(y_num[index]), '-o')
+plt.savefig('week 4/img/4_plot.png')
