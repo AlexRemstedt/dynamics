@@ -18,7 +18,7 @@ v0 = 0          # m/s
 a0 = 0          # m/s^2
 t0 = 0          # s
 t1 = 1          # s
-dt = 0.001      # s
+dt = 0.00001      # s
 
 # Answer vars
 b = 0
@@ -43,7 +43,7 @@ def f_floor(y):
     :param y: Height
     :return: stuiterkracht
     """
-    k_floor = 1000  # N/m
+    k_floor = 100000  # N/m
     f = -k_floor * y
     return np.maximum(f, 0)
 
@@ -150,7 +150,16 @@ y_num, v_num, a_num, total_p = numeriek(y0, v0, a0, time)
 
 index = np.where(f_floor(y_num) > 0)[0]
 
+# a
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_subplot(1, 1, 1)
 ax.plot(time[index], f_floor(y_num[index]), '-o')
 plt.savefig('week 4/img/4_plot.png')
+
+# b
+print(f"""
+a) {dt:.10f}
+b) {time[index[-1]] - time[index[0]]}
+c) {np.max(f_floor(y_num))}
+d) {np.min(y_num)}
+""")
