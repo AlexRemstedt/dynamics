@@ -17,9 +17,10 @@ y0 = 1          # m
 v0 = 0          # m/s
 a0 = 0          # m/s^2
 t0 = 0          # s
-t1 = 2         # s
+t1 = 1         # s
 dt = 0.001      # s
 e = 0.85
+d = 0
 
 # Answer vars
 time = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
@@ -113,7 +114,7 @@ def numeriek(y0=0, v0=0, a0=0, t=None):
 
     :return: positie, snelheid, versnelling
     """
-    global b
+    global d
 
     plaats = np.zeros(len(t))
     snelheid = np.zeros(len(t))
@@ -130,6 +131,7 @@ def numeriek(y0=0, v0=0, a0=0, t=None):
         plaats[n + 1] = plaats[n] + snelheid[n] * dt
 
         if plaats[n + 1] < 0:
+            d = n
             plaats[n + 1] = 0
             snelheid[n + 1] = -snelheid[n + 1] * e
 
@@ -145,5 +147,5 @@ string = 'a)' if t1 != 2 else 'b)'
 
 print(f'''
 {string} {e_pot(y_num[-1]) + e_kin(v_num[-1]) - e_pot(y_num[0]) - e_kin(v_num[0])} 
-d)
+d) {abs(m * v_num[d] - m * v_num[d + 1])}
 ''')
