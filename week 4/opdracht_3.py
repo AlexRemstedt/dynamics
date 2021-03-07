@@ -161,9 +161,6 @@ print(f'b) {index[0]}')
 print(f'b) {index[-1]}')
 
 # d
-p0 = m * v_num[index[0]]
-p1 = m * v_num[index[-1]]
-
 print(f'd) {abs(linear_momentum(v_num[index[0]]) - linear_momentum(v_num[index[-1]]))}')
 
 # e
