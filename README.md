@@ -44,5 +44,10 @@ def numeriek(t, begin_y, begin_v):
 
 Voor opdracht 2 moet er een oscilerende beweging ontstaan. Dit wordt gedaan door `a = -omega_n ** 2 * y`, waarbij `omega_n = np.sqrt(k/m)`.
 
-## [Week 4](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
+## [Week 4](https://github.com/AlexRemstedt/dynamics/tree/master/week%204)
 In week 4 word er meer gekeken naar H15 met Energie en impuls (linear momentum)
+
+## [Week 5](https://github.com/AlexRemstedt/dynamics/tree/master/week%205)
+Week 5 opdracht 1 -- Modelleren van verschillende slingers.
+
+Deze set opgaven bestaat uit zes opgaven die grotendeels hetzelfde zijn. Alleen de berekening van het traagheidsmoment verschilt. Werk de eerste net uit, dan zouden de andere vijf redelijk snel moeten gaan.
