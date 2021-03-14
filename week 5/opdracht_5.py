@@ -12,6 +12,7 @@ from matplotlib import pyplot as plt
 
 # variables
 g = 1.6  # m/s^2
+r = 1.7  # m
 theta_0 = -np.pi / 3  # rad
 omega_0 = 0  # rad/s
 dt = 0.001  # s
@@ -20,10 +21,10 @@ t1 = 7  # s
 time = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 # structural properties of disk
-r = 1.7  # m
+r_circle = 1.3  # m
 m = 1.6  # kg
-i_o = m * (2 * r) ** 2 / 12 * 2
-i = i_o + m * r ** 2
+i_o = m * r_circle ** 2 / 2  # kg m^2
+i = i_o + m * r ** 2  # kg m^2
 
 
 # functions
