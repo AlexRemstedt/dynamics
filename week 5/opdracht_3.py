@@ -2,8 +2,8 @@
 Alex Remstedt
 08/03/2021
 
-Week 5 opdracht 2 - [Slinger 1: een puntmassa]
-https://secure.ans-delft.nl/universities/1/courses/63457/assignments/220711/quiz/show/39445238
+Week 5 opdracht 3 - [Slinger 2: twee massa's]
+https://secure.ans-delft.nl/universities/1/courses/63457/assignments/220711/quiz/show/39445239
 """
 # imports
 import numpy as np
