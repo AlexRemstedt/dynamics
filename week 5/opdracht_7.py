@@ -2,8 +2,8 @@
 Alex Remstedt
 13/03/2021
 
-Week 5 opdracht 6 - [Slinger 5: weer een vierkante plaat]
-https://secure.ans-delft.nl/universities/1/courses/63457/assignments/220711/quiz/show/39445242
+Week 5 opdracht 7 - [Slinger 5: vierkante plaat met gat]
+https://secure.ans-delft.nl/universities/1/courses/63457/assignments/220711/quiz/show/39445243
 """
 # imports
 import numpy as np
@@ -22,9 +22,18 @@ time = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))
 
 # structural properties of square
 b = 3.4 / np.sqrt(2)  # m
-m = 1.6  # kg
-i_o = m * b ** 2 / 12 * 2
-i = i_o + m * r ** 2
+r_circle = 0.6  # m
+m_tot = 1.6  # kg
+
+v_square = b ** 2
+v_hole = np.pi * r_circle ** 2
+rho = m_tot / (v_square - v_hole)
+
+m_hole = rho * v_hole
+m_square = rho * v_square
+
+i_o = m_square * b ** 2 / 12 * 2 - m_hole * r_circle ** 2 / 2
+i = i_o + m_tot * r ** 2
 
 
 # functions
@@ -32,14 +41,14 @@ i = i_o + m * r ** 2
 def kinematics(state, t):
     theta = state[0]
     omega = state[1]
-    alpha = -g * np.sin(theta) * r * m / i
+    alpha = -g * np.sin(theta) * r * m_tot / i
     return omega, alpha
 
 
 def lin_kinematics(state, t):
     theta = state[0]
     omega = state[1]
-    alpha = -g * theta * r * m / i
+    alpha = -g * theta * r * m_tot / i
     return omega, alpha
 
 
@@ -52,8 +61,8 @@ omega_vec = res[:, 1]
 l_theta_vec = lin_res[:, 0]
 l_omega_vec = lin_res[:, 1]
 
-index = np.where(omega_vec > 0)[0]
-lin_index = np.where(l_omega_vec > 0)[0]
+index = np.where(theta_vec > 0)[0]
+lin_index = np.where(l_theta_vec > 0)[0]
 
 
 # Answers
