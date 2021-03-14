@@ -53,3 +53,8 @@ Week 5 opdracht 1: Modelleren van verschillende slingers.
 Deze set opgaven bestaat uit zes opgaven die grotendeels hetzelfde zijn. Alleen de berekening van het traagheidsmoment verschilt. Werk de eerste net uit, dan zouden de andere vijf redelijk snel moeten gaan.
 
 Na [opdracht 5](https://github.com/AlexRemstedt/dynamics/blob/master/week%205/opdracht_4.py) blijft de code vrijwel hetzelfde alleen verandert het traagheidsmoment `i` en `i_o`.
+
+
+## Useful References
+- [Maritieme Techniek Discord Server](https://discord.gg/gc8EsQxTcu)
+- [Werktuigbouwkunde Discord Server](https://discord.gg/gc8EsQxTcu)
