@@ -9,7 +9,7 @@ import numpy as np
 dt = 0.1  # [s] grootte van tijdstappen
 t0 = 0  # [s] Starttijd van simulatie
 t1 = 6.1  # [s] Eindtijd van sim
-x0 = 1.3  # [m] beginpositie (x-richting)
+x0 = 1.3  # [m] beginpositie (coordinate-richting)
 y0 = 0  # [m] Beginpositie (y-richting)
 v0 = 40  # [m/s] beginsnelheid
 a0 = -9.81  # [m/s^2] beginacceleratie

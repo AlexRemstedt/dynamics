@@ -7,7 +7,7 @@ General Info:
 Opdracht beschrijving:
     We gaan verder met de simulatie van de schoefloze boot en de volgende gegevens:
 
-    x(0)    |   0 m         \n
+    coordinate(0)    |   0 m         \n
     v(0)	|   4.5 m/s     \n
     P	    |   11 N        \n
     m	    |   105 kg      \n
