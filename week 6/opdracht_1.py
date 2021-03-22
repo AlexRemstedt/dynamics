@@ -11,7 +11,7 @@ from scipy.integrate import odeint
 from matplotlib import pyplot as plt
 from converter import deg_to_rad, to_accent
 
-# vars
+# constants
 m = 500  # kg
 i = 310  # kg m^2
 r_fext = np.array([0, -.9])  # m --> r'
