@@ -14,11 +14,20 @@ from converter import deg_to_rad, to_accent
 # vars
 m = 500  # kg
 i = 310  # kg m^2
+r_fext = np.array([0, -.9])  # m --> r'
 f_ext = np.array([1500, 0])  # N
 
+# time
+t0 = 0  # s
+t1 = 44  # s
+dt = 0.001  # s
+time = np.linspace(t0, t1, round(1 + (t1 - t0) / dt))  # s
 
-def to_accent(coordinate, theta):
-    return np.array([np.cos(theta) * coordinate[0], np.sin(theta) * coordinate[1]])
+# initial values
+theta0 = 0  # rad
+omega0 = 0  # rad/s
+x0 = 0  # m
+v0 = 0  # m/s
 
 
 def from_accent(coordinates, theta):
