@@ -7,6 +7,9 @@ https://secure.ans-delft.nl/universities/1/courses/63457/assignments/225494/quiz
 """
 # imports
 import numpy as np
+from scipy.integrate import odeint
+from matplotlib import pyplot as plt
+from converter import deg_to_rad, to_accent
 
 # vars
 m = 500  # kg
