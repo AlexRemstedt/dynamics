@@ -56,5 +56,39 @@ def ang_kinematics(state, t):
     """
     theta = state[0]
     omega = state[1]
-    alpha = moment() / i
+    alpha = moment(to_accent(f_ext, theta), r_fext) / i
     return omega, alpha
+
+
+# answers
+ang_kin = odeint(ang_kinematics, [theta0, omega0], time)
+
+theta_vec = ang_kin[:, 0]
+omega_vec = ang_kin[:, 1]
+
+# answers
+if __name__ == "__main__":
+    ans_a = moment(to_accent(f_ext, deg_to_rad(6)), r_fext)
+    b = moment(to_accent(f_ext, deg_to_rad(24)), r_fext) / i
+    [c, d] = f_ext / m
+    [e, f] = f_ext / 2 / m * t1 ** 2
+    g = theta_vec[-1]
+    [h, i] = f_ext / m * t1
+    j = omega_vec[-1]
+
+    print(f"""
+    a) {ans_a}
+    b) {b}
+    c) {c}
+    d) {d}
+    e) {e}
+    f) {f}
+    g) {g}
+    h) {h}
+    i) {i}
+    j) {j}
+    """)
+
+    plt.plot(time, theta_vec)
+    # plt.show()
+
