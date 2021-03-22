@@ -30,12 +30,16 @@ x0 = 0  # m
 v0 = 0  # m/s
 
 
-def from_accent(coordinates, theta):
-    return np.array([np.arccos(theta) * coordinates[0], np.arcsin(theta) * coordinates[1]])
+def moment(f, r):
+    """
+    Calculate force moment
 
+    :param f: force
+    :param r: arm
 
-def moment():
-
+    :return: force moment
+    """
+    return np.cross(r, f)
 
 
 def ang_kinematics(state, t):
