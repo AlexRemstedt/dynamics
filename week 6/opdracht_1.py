@@ -71,7 +71,7 @@ if __name__ == "__main__":
     ans_a = moment(to_accent(f_ext, deg_to_rad(6)), r_fext)
     b = moment(to_accent(f_ext, deg_to_rad(24)), r_fext) / i
     [c, d] = f_ext / m
-    [e, f] = f_ext / 2 / m * t1 ** 2
+    [e, f_ans] = f_ext / 2 / m * t1 ** 2
     g = theta_vec[-1]
     [h, i] = f_ext / m * t1
     j = omega_vec[-1]
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     c) {c}
     d) {d}
     e) {e}
-    f) {f}
+    f) {f_ans}
     g) {g}
     h) {h}
     i) {i}
