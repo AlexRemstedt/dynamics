@@ -76,7 +76,9 @@ def main(pplot=False):
 
     # E
 
-    if not pplot:
+    if pplot:
+        return e_ans, f_ans
+    else:
         # print
         print(f"""
         a) {a_ans}
@@ -88,8 +90,6 @@ def main(pplot=False):
         g) {g_ans}
         j) {j_ans}
         """)
-    if pplot:
-        return e_ans, f_ans
 
 
 def plot():
