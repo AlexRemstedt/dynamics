@@ -19,7 +19,7 @@ for i in range(len(time) - 1):
 In week 2 komt ook de `np.interp` meekijken, dit helpt bij het zoeken vn bijvoorbeel de tijd die hoort bij een bepaalde positie. Ik heb voor deze week een class structure gemaakt, waarbij Kinematics de integraties vooral doet en ForceFormula de krachten. De laatste opdracht van week 3 is er een extra moeilijkheidsgraad toegevoegd, want de kracht hangt nu af van de snelheid, waardoor een extra loop ontstaat.
 
 ## [Week 3](https://github.com/AlexRemstedt/dynamics/tree/master/week%203)
-In week 3 worden er functies gegeven aan ons van [F.G.J. Broeren](https://www.tudelft.nl/en/3me/about/departments/precision-and-microsystems-engineering-pme/people/junior-research-staff/broeren-freek/), die er zo uitzien:
+In week 3 worden er functies gegeven aan ons, die er zo uitzien:
 
 ```python
 def afgeleiden(state, t):
@@ -54,6 +54,10 @@ Deze set opgaven bestaat uit zes opgaven die grotendeels hetzelfde zijn. Alleen 
 
 Na [opdracht 5](https://github.com/AlexRemstedt/dynamics/blob/master/week%205/opdracht_4.py) blijft de code vrijwel hetzelfde alleen verandert het traagheidsmoment `i` en `i_o`.
 
+## [Week 6](https://github.com/AlexRemstedt/dynamics/tree/master/week%206)
+Week 6 is niet heel lastig, na het kijken van de colleges + wat inspiratie uit het boek, valt opdracht 1 behoorlijk mee. Om het mezelf wat makkelijker te maken heb ik [converter.py](https://github.com/AlexRemstedt/dynamics/blob/master/converter.py) toegevoegd. 
+
+Het is belangrijk om duidelijk verschil te houden tussen wat volgens het normale assenstelsel gaat en wat via de gedraaide.
 
 ## Useful References
 - [Maritieme Techniek Discord Server](https://discord.gg/gc8EsQxTcu)
