@@ -57,7 +57,7 @@ Na [opdracht 5](https://github.com/AlexRemstedt/dynamics/blob/master/week%205/op
 ## [Week 6](https://github.com/AlexRemstedt/dynamics/tree/master/week%206)
 Week 6 is niet heel lastig, na het kijken van de colleges + wat inspiratie uit het boek, valt opdracht 1 behoorlijk mee. Om het mezelf wat makkelijker te maken heb ik [converter.py](https://github.com/AlexRemstedt/dynamics/blob/master/converter.py) toegevoegd. 
 
-Het is belangrijk om duidelijk verschil te houden tussen wat volgens het normale assenstelsel gaat en wat via de gedraaide.
+Het is belangrijk om duidelijk verschil te houden tussen wat volgens het normale assenstelsel gaat en wat via de gedraaide. Bij opdracht 2 wordt de kracht constant parallel gehouden, dit maakt de hoekversnelling makkelijker, maar de lineaire versnelling lastiger.
 
 ## Useful References
 - [Maritieme Techniek Discord Server](https://discord.gg/gc8EsQxTcu)
