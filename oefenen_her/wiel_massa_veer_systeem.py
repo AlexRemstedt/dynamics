@@ -37,8 +37,9 @@ def spring_displacement(dy) -> float:
     :param float dy: Difference in height (y).
     :return: Displacement of the spring.
     """
-    u = r2 / r1  * dy
+    u = r2 / r1 * dy
     return u
+
 
 def angular_velocity(dy) -> float:
     """Calculate the angular velocity of the coil
@@ -53,10 +54,12 @@ def angular_velocity(dy) -> float:
     return ((2 * v_mass - v_spring_2) / (t_mass_2 + t_coil_2)) ** (1/2)
 
 
-def main():
+def main() -> str:
+    """Main prints."""
     return f"""
 {angular_velocity(.85)=}
     """
+
 
 if __name__ == "__main__":
     print(main())
