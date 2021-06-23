@@ -57,8 +57,8 @@ def numeriek(start_positie, start_snelheid, tijd):
 
 def analytisch(start_positie, start_snelheid, tijd):
 	"""
-	Bij analystisch wordt de positie van een object bepaald met behulp van een van te vorne geintegreerde formule op
-	analytische wijze.
+	Bij analystisch wordt de positie van een object bepaald met behulp van een
+	van te voren geintegreerde formule op analytische wijze.
 
 	D_t = [0, 10]
 		a(t) = 3.5 t / m  							[m/s^2] \n
@@ -87,7 +87,8 @@ def analytisch(start_positie, start_snelheid, tijd):
 		if tijd[t] <= t1:
 			acceleration_part = 3.5 * tijd[t] ** 3 / 6 / m
 			speed[t] = 1.75 * tijd[t] ** 2 / m
-			position[t] = start_positie + start_snelheid * tijd[t] + acceleration_part
+			position[t] = start_positie + start_snelheid * tijd[t] + \
+				acceleration_part
 		else:
 			speed[t] = (tijd[t] ** 4 / 16 - 450) / m
 			position[t] = (11500 / 3 + (tijd[t] ** 5) / 80 - 450 * tijd[t]) / m
@@ -107,11 +108,13 @@ def versnelling(t):
 
 
 # === Prints ===
-print(f'Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[0][-1]}')
-print(f'Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[0][-1]}')
-print(f'Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[0][-1] - analytisch(x0, v0, time)[0][-1])}')
-print(f'Velocity for t = 18.8: {analytisch(x0, v0, time)[1][-1]}')
-print(f'Velocity for t = 18.8: {numeriek(x0, v0, time)[1][-1]}')
+print(f"""
+Positie voor t = {t_end} volgens numerieke integratie: {numeriek(x0, v0, time)[0][-1]}
+Positie voor t = {t_end} volgens analytische benadering: {analytisch(x0, v0, time)[0][-1]}
+Verschil voor t = {t_end} : {abs(numeriek(x0, v0, time)[0][-1] - analytisch(x0, v0, time)[0][-1])}
+Velocity for t = 18.8: {analytisch(x0, v0, time)[1][-1]}
+Velocity for t = 18.8: {numeriek(x0, v0, time)[1][-1]}
+""")
 
 # === Plots ===
 fig, ax = plt.subplots(1, 2)

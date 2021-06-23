@@ -55,7 +55,7 @@ def from_accent(coordinate, theta):
 
     :return: transposed coordinate
     """
-    if type(coordinate) == np.ndarray:
+    if isinstance(coordinate) == np.ndarray:
         x = np.cos(theta) * coordinate[0] + np.sin(theta) * coordinate[1]
         y = np.sin(theta) * coordinate[0] + np.cos(theta) * coordinate[1]
     else:
